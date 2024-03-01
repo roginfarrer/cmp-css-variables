@@ -1,26 +1,37 @@
-# cmp-sass-variables
+# cmp-css-variables
 
-Nvim cmp source for Sass variables. 
+[nvim-cmp](https://github.com/hrsh7th/nvim-cmp) source for CSS variables.
 
-If `vim.g.sass_variables_file` is set, variables in that file will
-available globally. Set it to a file name. The working directory will
-be searched for a file with that name.
+If `vim.g.css_variables_files` is set, variables in that file will
+available globally. Set it to a table of file paths, relative to the current working directory. The working directory will
+be searched for a file with that path.
 
-Variables are also found in the current file and any imported files.
+It's expected that this completion source is used with the CSS language server, which provides completion for CSS variables defined within the file. So this completion source only supplies the values defined in `vim.g.css_variables_files`, not those defined in the current file.
 
-## Setup
+This completion source will be active in the following filetypes: `css`, `less`, `scss`, and `sass`.
+
+## Installation & Setup
+
+With [lazy](https://github.com/folke/lazy.nvim):
 
 ```lua
--- optionally
-vim.g.sass_variables_file = "_variables.scss"
-
-require'cmp'.setup {
-  sources = {
-    { name = 'sass-variables' }
-  }
+{
+  'hrsh7th/nvim-cmp',
+  dependencies = { 'roginfarrer/cmp-css-variables' },
+  config = function()
+    require'cmp'.setup {
+      sources = {
+        { name = 'css-variables' }
+      }
+    }
+  end
 }
 ```
 
-## Requirements
+This completion source will pull from files defined in `vim.g.css_variables_files`.
 
-Unix like system, cmp and Telescope.
+```lua
+vim.g.css_variables_files = { "variables.css" }
+```
+
+You probably will want to specify the files with global CSS variables on a per-project basis. Using Neovim's `exrc` setting, you can put a `.nvim.lua` file in the root of your project's directory with this defined there.
