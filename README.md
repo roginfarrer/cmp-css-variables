@@ -1,6 +1,8 @@
 # cmp-css-variables
 
-[nvim-cmp](https://github.com/hrsh7th/nvim-cmp) source for CSS variables.
+> [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) source for global CSS variables in a project.
+ 
+![Demo gif](https://github.com/roginfarrer/cmp-css-variables/assets/9063669/07cae9b1-4d3c-44bd-8d78-7ad82a556e94)
 
 If `vim.g.css_variables_files` is set, variables in that file will
 available globally. Set it to a table of file paths, relative to the current working directory. The working directory will
