@@ -14,6 +14,7 @@ function source.is_available()
 			or vim.bo.filetype == "sass"
 			or vim.bo.filetype == "css"
 			or vim.bo.filetype == "less"
+			or vim.bo.filetype == "vue"
 		)
 end
 
